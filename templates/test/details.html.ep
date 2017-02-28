@@ -21,7 +21,7 @@
                     <td class="component">
                         <div>
                             %= link_to $module->{name} => url_for('src_step', stepid => 1, moduleid => $module->{name}, testid => $testid)
-                            <button onclick="showThumbnails('<%== $i %>')">+/-</button>
+                            <button onclick="onClickShowThumbnails('<%== $i %>')">+/-</button>
                         </div>
                         <div class="flags">
                             % if ($module->{fatal}) {

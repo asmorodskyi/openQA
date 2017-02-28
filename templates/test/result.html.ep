@@ -10,6 +10,18 @@
     setupResultButtons();
     setupResult('<%= $job->state %>', <%= $job->id %>, '<%= url_for('status', testid => $job->id) %>', '<%= url_for('details', testid => $job->id) %>');
     setupUrls('<%== icon_url 'audio.svg' %>','<%= icon_url 'terminal.svg' %>','<%== url_for('apiv1_jobmodule',jobid => $job->id) %>');
+    $.ajax({
+        url: sessionStorage.getItem('openQA.requestURL'),
+        type: 'GET',
+        dataType: 'json',
+        success: function(resp) {
+            for (var i = 0; i < resp.modules.length; i++) {
+                if (resp.modules[i].result != 'passed') {
+                    showThumbnailsForModule(i, resp.modules[i]);
+                }
+            }
+        }
+    });
 % end
 
 <div class="row">

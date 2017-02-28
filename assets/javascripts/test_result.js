@@ -227,21 +227,6 @@ function setupResult(state, jobid, status_url, details_url) {
   });
 }
 
-$(document).ready(function() {
-    $.ajax({
-        url: sessionStorage.getItem('openQA.requestURL'),
-        type: 'GET',
-        dataType: 'json',
-        success: function(resp) {
-            for (var i = 0; i < resp.modules.length; i++) {
-                if (resp.modules[i].result != 'passed') {
-                    showThumbnailsForModule(i, resp.modules[i]);
-                }
-            }
-        }
-    });
-});
-
 function setupUrls(audio_icon_url, terminal_icon_url, request_url) {
     sessionStorage.setItem('openQA.audioIconURL', audio_icon_url);
     sessionStorage.setItem('openQA.terminalIconURL', terminal_icon_url);
